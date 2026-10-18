@@ -68,6 +68,24 @@ La idea de esta charla es presentar los preliminares necesarios para entender es
 
   {
     fecha: "2026-08-27",
+    hora: "12:00",
+    lugar: "Auditorio Pablo Neruda, Facultad de Ciencias Jurídicas y Empresariales (UFRO)",
+    titulo: "Un estudio en Representaciones de Grupos Oligomórficos",
+    expositor: "Alejandro Araya",
+    procedencia: "estudiante del Magíster en Ciencias con mención en Matemática, Universidad de Talca",
+    resumen: String.raw`En el contexto de la teoría de representaciones, hay situaciones en las que las herramientas clásicas no son suficientes. Un ejemplo interesante son las categorías de interpolación en rango complejo introducidas por Pierre Deligne. En esta charla, presentaremos el trabajo de Nate Harman y Andrew Snowden, quienes desarrollan un marco para abordar situaciones como las que aparecen en las categorías de Deligne. Para ello, a partir de grupos oligomórficos, definen una noción de integración que permite construir un análogo de la multiplicación de matrices. Así, nos enfocaremos en la categoría $\underline{\mathrm{Perm}}(G,\mu)$ de “representaciones de permutación”, que permite obtener una visión más concreta de los objetos que aparecen en las categorías de Deligne.
+
+Finalmente, de contar con tiempo, comentaremos algunas propiedades interesantes de esta categoría y por qué resulta útil estudiar este tipo de objetos.`,
+    referencias: [
+      String.raw`[Del07] P. Deligne, <em>La catégorie des représentations du groupe symétrique $S_t$, lorsque $t$ n’est pas un entier naturel</em>, Algebraic groups and homogeneous spaces, 19:209–273, 2007.`,
+      String.raw`[HS22] N. Harman y A. Snowden, <em>Oligomorphic groups and tensor categories</em>, arXiv preprint arXiv:2204.04526, 2022.`,
+    ],
+    // diapositivas: "diapositivas/archivo.pdf",
+    // video: "https://...",
+  },
+
+  {
+    fecha: "2026-08-27",
     hora: "11:00",
     lugar: "Auditorio Pablo Neruda, Facultad de Ciencias Jurídicas y Empresariales (UFRO)",
     titulo: "Formas reales de hipersuperficies clásicas",
@@ -79,24 +97,6 @@ En esta charla estudiaremos este problema para tres familias clásicas de hipers
     referencias: [
       String.raw`[Sas23] Y. Sasaki, <em>On real forms of Fermat hypersurfaces</em>, 2023. Preprint, arXiv:2312.10691.`,
       String.raw`[LV26] A. Liendo y M. Vásquez, <em>Twisted forms of classical hypersurfaces</em>, 2026. Preprint, arXiv:2608.13896.`,
-    ],
-    // diapositivas: "diapositivas/archivo.pdf",
-    // video: "https://...",
-  },
-
-  {
-    fecha: "2026-08-27",
-    hora: "11:00",
-    lugar: "Auditorio Pablo Neruda, Facultad de Ciencias Jurídicas y Empresariales (UFRO)",
-    titulo: "Un estudio en Representaciones de Grupos Oligomórficos",
-    expositor: "Alejandro Araya",
-    procedencia: "estudiante del Magíster en Ciencias con mención en Matemática, Universidad de Talca",
-    resumen: String.raw`En el contexto de la teoría de representaciones, hay situaciones en las que las herramientas clásicas no son suficientes. Un ejemplo interesante son las categorías de interpolación en rango complejo introducidas por Pierre Deligne. En esta charla, presentaremos el trabajo de Nate Harman y Andrew Snowden, quienes desarrollan un marco para abordar situaciones como las que aparecen en las categorías de Deligne. Para ello, a partir de grupos oligomórficos, definen una noción de integración que permite construir un análogo de la multiplicación de matrices. Así, nos enfocaremos en la categoría $\underline{\mathrm{Perm}}(G,\mu)$ de “representaciones de permutación”, que permite obtener una visión más concreta de los objetos que aparecen en las categorías de Deligne.
-
-Finalmente, de contar con tiempo, comentaremos algunas propiedades interesantes de esta categoría y por qué resulta útil estudiar este tipo de objetos.`,
-    referencias: [
-      String.raw`[Del07] P. Deligne, <em>La catégorie des représentations du groupe symétrique $S_t$, lorsque $t$ n’est pas un entier naturel</em>, Algebraic groups and homogeneous spaces, 19:209–273, 2007.`,
-      String.raw`[HS22] N. Harman y A. Snowden, <em>Oligomorphic groups and tensor categories</em>, arXiv preprint arXiv:2204.04526, 2022.`,
     ],
     // diapositivas: "diapositivas/archivo.pdf",
     // video: "https://...",
