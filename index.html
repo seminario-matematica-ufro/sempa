@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="images/favicon.png">
 <title>Seminario de Estudiantes de Matemática Pura y Aplicada</title>
 <meta name="description" content="Seminario de Estudiantes de Matemática Pura y Aplicada de la Universidad de La Frontera: charlas, calendario y contacto.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
@@ -15,7 +16,10 @@
     --gris: #5a6472;
     --linea: #d9dde3;
     --fondo-suave: #f5f6f8;
-    --acento: #1f4e8c;
+    --acento: #215C84;
+    --azul: #215C84;
+    --turquesa: #38A0B2;
+    --verde: #9ED68F;
     --blanco: #ffffff;
     --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
     --sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
@@ -27,22 +31,27 @@
   a:focus-visible, summary:focus-visible { outline: 3px solid var(--acento); outline-offset: 3px; }
   .contenedor { max-width: 52rem; margin: 0 auto; padding: 0 1.25rem; }
 
-  header.barra { position: sticky; top: 0; z-index: 10; background: var(--blanco); border-bottom: 1px solid var(--linea); }
+  header.barra { position: sticky; top: 0; z-index: 10; background: var(--blanco); }
+  header.barra::before { content: ""; display: block; height: 5px; background: linear-gradient(90deg, var(--azul) 0 34%, var(--turquesa) 34% 67%, var(--verde) 67% 100%); }
   .barra .contenedor { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1.5rem; padding-top: .75rem; padding-bottom: .75rem; }
   .marca { font-family: var(--serif); font-weight: 600; font-size: 1.25rem; color: var(--tinta); text-decoration: none; }
   nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin: 0; padding: 0; }
   nav a { color: var(--tinta); text-decoration: none; font-weight: 600; font-size: .98rem; padding: .25rem 0; border-bottom: 2px solid transparent; }
-  nav a:hover { border-bottom-color: var(--acento); }
+  nav a:hover { border-bottom-color: var(--verde); }
 
-  .portada { background: var(--fondo-suave); border-bottom: 1px solid var(--linea); padding: 4rem 0 3.5rem; }
+  .portada { background: var(--azul); color: #fff; border-bottom: 6px solid var(--turquesa); padding: 3.25rem 0; }
+  .portada-flex { display: flex; flex-wrap: wrap; align-items: center; gap: 2rem 2.5rem; }
+  .portada-texto { flex: 1 1 24rem; }
+  .logo { height: 12rem; width: auto; max-width: 100%; }
   .portada h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2rem, 5.5vw, 3.1rem); line-height: 1.15; margin: 0 0 1.25rem; max-width: 18em; }
-  .portada p { margin: 0 0 .5rem; max-width: 40rem; color: var(--gris); font-size: 1.15rem; }
+  .portada p { margin: 0 0 .5rem; max-width: 40rem; color: #e3eef5; font-size: 1.15rem; }
   .datos { margin-top: 1.75rem; display: grid; gap: .35rem 2rem; grid-template-columns: max-content 1fr; max-width: 40rem; }
   .datos dt { font-weight: 600; }
   .datos dd { margin: 0; }
 
   section { padding: 3.25rem 0 .5rem; }
-  h2 { font-family: var(--serif); font-weight: 600; font-size: 1.7rem; margin: 0 0 1.25rem; padding-bottom: .5rem; border-bottom: 2px solid var(--tinta); }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: 1.7rem; margin: 0 0 1.25rem; padding-bottom: .6rem; border-bottom: 1px solid var(--linea); position: relative; }
+  h2::after { content: ""; position: absolute; left: 0; bottom: -3px; width: 4.5rem; height: 5px; background: var(--turquesa); }
   h3 { font-family: var(--serif); font-weight: 500; font-size: 1.25rem; line-height: 1.3; margin: 0; }
 
   .charla { border-top: 1px solid var(--linea); padding: 1.35rem 0; display: grid; grid-template-columns: 9.5rem 1fr; gap: .5rem 1.5rem; }
@@ -54,13 +63,14 @@
   details summary { cursor: pointer; color: var(--acento); font-weight: 600; width: fit-content; }
   details p { margin: .6rem 0 .25rem; max-width: 38rem; }
   .enlaces { margin: .5rem 0 0; font-size: .98rem; }
-  .vacio { padding: 1.25rem; background: var(--fondo-suave); border-left: 4px solid var(--acento); }
+  .vacio { padding: 1.25rem; background: var(--fondo-suave); border-left: 4px solid var(--verde); }
+  .pendiente { color: var(--gris); font-style: italic; }
 
   .organizadores { display: grid; gap: 1.25rem 2rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
   .organizadores p { margin: .15rem 0; }
   .carrera { color: var(--gris); }
 
-  footer { margin-top: 4rem; padding: 2rem 0; background: var(--fondo-suave); border-top: 1px solid var(--linea); color: var(--gris); font-size: .96rem; }
+  footer { margin-top: 4rem; padding: 2rem 0; background: var(--fondo-suave); border-top: 4px solid var(--turquesa); color: var(--gris); font-size: .96rem; }
   footer p { margin: .2rem 0; }
 
   @media (max-width: 40rem) {
@@ -89,7 +99,9 @@
 
 <main id="inicio">
   <div class="portada">
-    <div class="contenedor">
+    <div class="contenedor portada-flex">
+      <img class="logo" src="images/logo-emblema.png" alt="" width="440" height="393">
+      <div class="portada-texto">
       <h1>Seminario de Estudiantes de Matemática Pura y Aplicada</h1>
       <p>Un espacio para que estudiantes presenten y conversen sobre matemática, con charlas abiertas a toda la comunidad universitaria.</p>
       <dl class="datos">
@@ -100,6 +112,7 @@
         <dt>Entrada</dt>
         <dd>Libre, no necesitas inscribirte</dd>
       </dl>
+      </div>
     </div>
   </div>
 
@@ -153,6 +166,11 @@
         <div>
           <h3>Aproximación y ortogonalidad en espacios de Sobolev ponderados en el triángulo</h3>
           <p class="quien"><b>Brayan Sandoval</b>, Ingeniero Civil Matemático, Universidad de Concepción</p>
+          <details>
+            <summary>Ver resumen</summary>
+            <p>Resumen por agregar.</p>
+          </details>
+          <p class="enlaces"><span class="pendiente">Diapositivas: por agregar</span></p>
         </div>
       </article>
 
@@ -165,6 +183,11 @@
         <div>
           <h3>Acciones C¹ de los grupos Baumslag-Solitar</h3>
           <p class="quien"><b>Franco Gómez</b>, estudiante del Magíster en Ciencias Matemáticas, Universidad de Chile</p>
+          <details>
+            <summary>Ver resumen</summary>
+            <p>Resumen por agregar.</p>
+          </details>
+          <p class="enlaces"><span class="pendiente">Diapositivas: por agregar</span></p>
         </div>
       </article>
 
@@ -177,6 +200,11 @@
         <div>
           <h3>Formas reales de hipersuperficies clásicas</h3>
           <p class="quien"><b>Matías Vásquez</b>, estudiante del Magíster en Ciencias con mención en Matemática, Universidad de Talca</p>
+          <details>
+            <summary>Ver resumen</summary>
+            <p>Resumen por agregar.</p>
+          </details>
+          <p class="enlaces"><span class="pendiente">Diapositivas: por agregar</span></p>
         </div>
       </article>
 
@@ -189,11 +217,23 @@
         <div>
           <h3>Un estudio en Representaciones de Grupos Oligomórficos</h3>
           <p class="quien"><b>Alejandro Araya</b>, estudiante del Magíster en Ciencias con mención en Matemática, Universidad de Talca</p>
+          <details>
+            <summary>Ver resumen</summary>
+            <p>Resumen por agregar.</p>
+          </details>
+          <p class="enlaces"><span class="pendiente">Diapositivas: por agregar</span></p>
         </div>
       </article>
 
-      <!-- Ejemplo de enlaces para una charla pasada:
-      <p class="enlaces"><a href="diapositivas/charla1.pdf">Diapositivas</a> · <a href="https://youtube.com/...">Video</a></p>
+      <!--
+        CÓMO AGREGAR EL RESUMEN Y LAS DIAPOSITIVAS DE UNA CHARLA PASADA:
+        1. Resumen: reemplaza el texto "Resumen por agregar." por el resumen de la charla.
+           Puedes escribir fórmulas entre signos de dólar, por ejemplo $C^1$.
+        2. Diapositivas: sube el PDF a una carpeta llamada "diapositivas" en tu repositorio
+           (por ejemplo diapositivas/2026-10-09-sandoval.pdf).
+        3. Reemplaza la línea <span class="pendiente">Diapositivas: por agregar</span> por:
+           <a href="diapositivas/2026-10-09-sandoval.pdf">Ver diapositivas (PDF)</a>
+        4. Si hay video, agrega al lado: · <a href="https://...">Ver video</a>
       -->
     </section>
 
