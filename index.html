@@ -34,16 +34,19 @@
   header.barra { position: sticky; top: 0; z-index: 10; background: var(--blanco); }
   header.barra::before { content: ""; display: block; height: 5px; background: linear-gradient(90deg, var(--azul) 0 34%, var(--turquesa) 34% 67%, var(--verde) 67% 100%); }
   .barra .contenedor { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1.5rem; padding-top: .75rem; padding-bottom: .75rem; }
-  .marca { font-family: var(--serif); font-weight: 600; font-size: 1.25rem; color: var(--tinta); text-decoration: none; }
+  .marca { display: inline-flex; align-items: center; gap: .65rem; font-family: var(--serif); font-weight: 600; font-size: 1.25rem; color: var(--tinta); text-decoration: none; }
   nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin: 0; padding: 0; }
   nav a { color: var(--tinta); text-decoration: none; font-weight: 600; font-size: .98rem; padding: .25rem 0; border-bottom: 2px solid transparent; }
   nav a:hover { border-bottom-color: var(--verde); }
 
-  .portada { background: var(--azul); color: #fff; border-bottom: 6px solid var(--turquesa); padding: 3.25rem 0; }
+  .portada { background: var(--azul); color: #fff; border-bottom: 6px solid var(--turquesa); padding: 2.75rem 0; }
+  .marca img { width: 2.4rem; height: 2.4rem; border-radius: .4rem; }
   .portada-flex { display: flex; flex-wrap: wrap; align-items: center; gap: 2rem 2.5rem; }
   .portada-texto { flex: 1 1 24rem; }
-  .logo { height: 12rem; width: auto; max-width: 100%; }
-  .portada h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2rem, 5.5vw, 3.1rem); line-height: 1.15; margin: 0 0 1.25rem; max-width: 18em; }
+  .portada { position: relative; overflow: hidden; }
+  .portada::after { content: ""; position: absolute; right: 4%; top: 50%; transform: translateY(-50%); width: 22rem; height: 20rem; background: url("images/logo-emblema.png") center / contain no-repeat; opacity: .13; pointer-events: none; }
+  .portada .contenedor { position: relative; z-index: 1; }
+  .portada h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.75rem, 4vw, 2.4rem); line-height: 1.2; margin: 0 0 1rem; max-width: 22em; text-wrap: balance; }
   .portada p { margin: 0 0 .5rem; max-width: 40rem; color: #e3eef5; font-size: 1.15rem; }
   .datos { margin-top: 1.75rem; display: grid; gap: .35rem 2rem; grid-template-columns: max-content 1fr; max-width: 40rem; }
   .datos dt { font-weight: 600; }
@@ -74,6 +77,7 @@
   footer p { margin: .2rem 0; }
 
   @media (max-width: 40rem) {
+    .portada::after { display: none; }
     .charla { grid-template-columns: 1fr; }
     .datos { grid-template-columns: 1fr; }
     .datos dd { margin-bottom: .5rem; }
@@ -84,7 +88,7 @@
 
 <header class="barra">
   <div class="contenedor">
-    <a class="marca" href="#inicio">Seminario de Estudiantes de Matemática</a>
+    <a class="marca" href="#inicio" aria-label="SEMPA, inicio"><img src="images/favicon.png" alt="" width="36" height="36"><span>SEMPA</span></a>
     <nav aria-label="Principal">
       <ul>
         <li><a href="#acerca">Acerca de</a></li>
@@ -100,7 +104,6 @@
 <main id="inicio">
   <div class="portada">
     <div class="contenedor portada-flex">
-      <img class="logo" src="images/logo-emblema.png" alt="" width="440" height="393">
       <div class="portada-texto">
       <h1>Seminario de Estudiantes de Matemática Pura y Aplicada</h1>
       <p>Un espacio para que estudiantes presenten y conversen sobre matemática, con charlas abiertas a toda la comunidad universitaria.</p>
