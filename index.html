@@ -67,6 +67,14 @@
   details p { margin: .6rem 0 .25rem; max-width: 38rem; }
   .referencias { max-width: 38rem; padding-left: 1.2rem; font-size: .96rem; color: var(--gris); }
   details .katex-display { overflow-x: auto; overflow-y: hidden; padding: .25rem 0; max-width: 100%; }
+  .suscripcion { margin-top: 2.25rem; padding: 1.25rem 1.4rem; background: var(--fondo-suave); border-left: 4px solid var(--verde); max-width: 36rem; }
+  .suscripcion p { margin: .4rem 0 0; }
+  .suscripcion label { display: block; font-weight: 600; margin: 1rem 0 .3rem; }
+  .fila-aviso { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .fila-aviso input { flex: 1 1 14rem; font: inherit; padding: .55rem .65rem; border: 1px solid #aeb5bf; border-radius: .35rem; background: var(--blanco); color: var(--tinta); }
+  .fila-aviso button { font: inherit; font-weight: 600; background: var(--azul); color: #fff; border: 0; border-radius: .35rem; padding: .55rem 1.2rem; cursor: pointer; }
+  .fila-aviso button:disabled { opacity: .6; cursor: wait; }
+  .fila-aviso input:focus-visible, .fila-aviso button:focus-visible { outline: 3px solid var(--acento); outline-offset: 2px; }
   .formulario { margin-top: 2rem; max-width: 36rem; }
   .formulario label { display: block; font-weight: 600; margin: 1rem 0 .25rem; }
   .formulario .opcional { font-weight: 400; color: var(--gris); }
@@ -146,6 +154,21 @@
       <h2>Calendario</h2>
       <div id="lista-proximas"></div>
       <noscript><p class="vacio">Para ver las charlas necesitas activar JavaScript en tu navegador.</p></noscript>
+
+      <div class="suscripcion" id="avisos">
+        <h3>Recibe los avisos de cada charla</h3>
+        <p>Déjanos tu correo y te escribiremos antes de cada sesión con el título, el expositor y el lugar.</p>
+        <form id="form-avisos" aria-labelledby="titulo-avisos">
+          <label for="s-email" id="titulo-avisos">Tu correo</label>
+          <div class="fila-aviso">
+            <input id="s-email" name="email" type="email" autocomplete="email" required placeholder="nombre@correo.cl">
+            <button type="submit">Suscribirme</button>
+          </div>
+          <div class="trampa" aria-hidden="true"><label>No completar este campo<input name="trampa" type="text" tabindex="-1" autocomplete="off"></label></div>
+          <p id="estado-avisos" class="estado" role="status" aria-live="polite"></p>
+        </form>
+        <p class="nota">Solo enviaremos avisos del seminario. Puedes darte de baja en cualquier momento escribiendo a seminario.ufrontera@gmail.com.</p>
+      </div>
     </section>
 
     <section id="anteriores">
@@ -344,6 +367,45 @@
       var cuerpo = d.mensaje + "\n\n—\n" + (d.nombre ? d.nombre + " " : "") + "(" + d.email + ")";
       aviso("No pudimos enviarlo desde la página. Se abrirá tu programa de correo con el mensaje listo; si no se abre, escríbenos a " + CORREO + ".", false);
       location.href = "mailto:" + CORREO + "?subject=" + encodeURIComponent(d.asunto) + "&body=" + encodeURIComponent(cuerpo);
+    })
+    .then(function () { boton.disabled = false; });
+  });
+})();
+</script>
+<script>
+(function () {
+  var ENDPOINT = "https://formsubmit.co/ajax/seminario.ufrontera@gmail.com";
+  var CORREO = "seminario.ufrontera@gmail.com";
+  var f = document.getElementById("form-avisos");
+  if (!f) return;
+  var estado = document.getElementById("estado-avisos");
+  var boton = f.querySelector("button");
+  function aviso(t, ok) { estado.textContent = t; estado.className = "estado " + (ok ? "ok" : "mal"); }
+
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (f.elements.trampa.value) return;
+    var correo = f.elements.email.value.trim();
+    boton.disabled = true;
+    aviso("Enviando…", true);
+    fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({ email: correo, message: "Nueva suscripción a los avisos del seminario.",
+                             _subject: "[Suscripción SEMPA] " + correo, _template: "table", _captcha: "false" })
+    })
+    .then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) {
+        if (!r.ok || String(j.success) === "false") throw new Error("envio");
+      });
+    })
+    .then(function () {
+      f.reset();
+      aviso("¡Listo! Te avisaremos antes de cada charla.", true);
+    })
+    .catch(function () {
+      aviso("No pudimos registrar tu correo desde la página. Se abrirá tu programa de correo con un mensaje listo; si no se abre, escríbenos a " + CORREO + ".", false);
+      location.href = "mailto:" + CORREO + "?subject=" + encodeURIComponent("Suscripción a los avisos") + "&body=" + encodeURIComponent("Quiero recibir los avisos del seminario en este correo: " + correo);
     })
     .then(function () { boton.disabled = false; });
   });
