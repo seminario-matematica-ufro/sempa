@@ -67,6 +67,19 @@
   details p { margin: .6rem 0 .25rem; max-width: 38rem; }
   .referencias { max-width: 38rem; padding-left: 1.2rem; font-size: .96rem; color: var(--gris); }
   details .katex-display { overflow-x: auto; overflow-y: hidden; padding: .25rem 0; max-width: 100%; }
+  .formulario { margin-top: 2rem; max-width: 36rem; }
+  .formulario label { display: block; font-weight: 600; margin: 1rem 0 .25rem; }
+  .formulario .opcional { font-weight: 400; color: var(--gris); }
+  .formulario input, .formulario textarea { width: 100%; font: inherit; padding: .55rem .65rem; border: 1px solid #aeb5bf; border-radius: .35rem; background: var(--blanco); color: var(--tinta); }
+  .formulario textarea { resize: vertical; }
+  .formulario button { margin-top: 1.25rem; font: inherit; font-weight: 600; background: var(--azul); color: #fff; border: 0; border-radius: .35rem; padding: .65rem 1.3rem; cursor: pointer; }
+  .formulario button:disabled { opacity: .6; cursor: wait; }
+  .formulario input:focus-visible, .formulario textarea:focus-visible, .formulario button:focus-visible { outline: 3px solid var(--acento); outline-offset: 2px; }
+  .trampa { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .estado { margin: .9rem 0 0; font-weight: 600; }
+  .estado.ok { color: #1d6b2f; }
+  .estado.mal { color: #9a3412; }
+  .nota { margin: .5rem 0 0; font-size: .92rem; color: var(--gris); }
   .enlaces { margin: .5rem 0 0; font-size: .98rem; }
   .vacio { padding: 1.25rem; background: var(--fondo-suave); border-left: 4px solid var(--verde); }
   .pendiente { color: var(--gris); font-style: italic; }
@@ -158,13 +171,29 @@
 
     <section id="contacto">
       <h2>Contacto</h2>
-      <p>Para proponer una charla, resolver dudas o enterarte de las próximas sesiones, escríbenos o síguenos en Instagram.</p>
+      <p>Para proponer una charla, resolver dudas o enterarte de las próximas sesiones, escríbenos desde el formulario, por correo o síguenos en Instagram.</p>
       <dl class="datos">
         <dt>Correo</dt>
         <dd><a href="mailto:seminario.ufrontera@gmail.com">seminario.ufrontera@gmail.com</a></dd>
         <dt>Instagram</dt>
         <dd><a href="https://www.instagram.com/seminario.matematica.ufro/" rel="noopener">@seminario.matematica.ufro</a></dd>
       </dl>
+
+      <form id="form-contacto" class="formulario" aria-labelledby="titulo-form">
+        <h3 id="titulo-form">Escríbenos un mensaje</h3>
+        <label for="c-nombre">Nombre <span class="opcional">(opcional)</span></label>
+        <input id="c-nombre" name="nombre" type="text" autocomplete="name">
+        <label for="c-email">Tu correo, para poder responderte</label>
+        <input id="c-email" name="email" type="email" autocomplete="email" required>
+        <label for="c-asunto">Asunto</label>
+        <input id="c-asunto" name="asunto" type="text" required maxlength="120">
+        <label for="c-mensaje">Mensaje</label>
+        <textarea id="c-mensaje" name="mensaje" rows="6" required maxlength="4000"></textarea>
+        <div class="trampa" aria-hidden="true"><label>No completar este campo<input name="trampa" type="text" tabindex="-1" autocomplete="off"></label></div>
+        <button type="submit">Enviar mensaje</button>
+        <p id="estado-contacto" class="estado" role="status" aria-live="polite"></p>
+        <p class="nota">El mensaje llega a seminario.ufrontera@gmail.com y lo usamos solo para responderte.</p>
+      </form>
     </section>
 
   </div>
@@ -276,6 +305,47 @@
         { left: "$", right: "$", display: false }
       ] });
     }
+  });
+})();
+</script>
+<script>
+(function () {
+  var ENDPOINT = "https://formsubmit.co/ajax/seminario.ufrontera@gmail.com";
+  var CORREO = "seminario.ufrontera@gmail.com";
+  var f = document.getElementById("form-contacto");
+  if (!f) return;
+  var estado = document.getElementById("estado-contacto");
+  var boton = f.querySelector("button");
+  function aviso(t, ok) { estado.textContent = t; estado.className = "estado " + (ok ? "ok" : "mal"); }
+
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (f.elements.trampa.value) return;
+    var d = { nombre: f.elements.nombre.value.trim(), email: f.elements.email.value.trim(),
+              asunto: f.elements.asunto.value.trim(), mensaje: f.elements.mensaje.value.trim() };
+    boton.disabled = true;
+    aviso("Enviando…", true);
+    fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({ name: d.nombre, email: d.email, message: d.mensaje,
+                             _subject: "[Sitio SEMPA] " + d.asunto, _template: "table", _captcha: "false" })
+    })
+    .then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) {
+        if (!r.ok || String(j.success) === "false") throw new Error("envio");
+      });
+    })
+    .then(function () {
+      f.reset();
+      aviso("¡Mensaje enviado! Te responderemos al correo que indicaste.", true);
+    })
+    .catch(function () {
+      var cuerpo = d.mensaje + "\n\n—\n" + (d.nombre ? d.nombre + " " : "") + "(" + d.email + ")";
+      aviso("No pudimos enviarlo desde la página. Se abrirá tu programa de correo con el mensaje listo; si no se abre, escríbenos a " + CORREO + ".", false);
+      location.href = "mailto:" + CORREO + "?subject=" + encodeURIComponent(d.asunto) + "&body=" + encodeURIComponent(cuerpo);
+    })
+    .then(function () { boton.disabled = false; });
   });
 })();
 </script>
