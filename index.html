@@ -65,6 +65,8 @@
   .quien b { color: var(--tinta); font-weight: 600; }
   details summary { cursor: pointer; color: var(--acento); font-weight: 600; width: fit-content; }
   details p { margin: .6rem 0 .25rem; max-width: 38rem; }
+  .referencias { max-width: 38rem; padding-left: 1.2rem; font-size: .96rem; color: var(--gris); }
+  details .katex-display { overflow-x: auto; overflow-y: hidden; padding: .25rem 0; max-width: 100%; }
   .enlaces { margin: .5rem 0 0; font-size: .98rem; }
   .vacio { padding: 1.25rem; background: var(--fondo-suave); border-left: 4px solid var(--verde); }
   .pendiente { color: var(--gris); font-style: italic; }
@@ -106,14 +108,14 @@
     <div class="contenedor portada-flex">
       <div class="portada-texto">
       <h1>Seminario de Estudiantes de Matemática Pura y Aplicada</h1>
-      <p>Un espacio para que estudiantes presenten y conversen sobre matemática, con charlas abiertas a la comunidad universitaria.</p>
+      <p>Un espacio para que estudiantes presenten y conversen sobre matemática, con charlas abiertas a toda la comunidad universitaria.</p>
       <dl class="datos">
         <dt>Cuándo</dt>
-        <dd>Jueves o viernes por la tarde</dd>
+        <dd>Jueves en horario protegido, o jueves y viernes por la tarde</dd>
         <dt>Dónde</dt>
-        <dd>Universidad de La Frontera, sala por definir</dd>
+        <dd>Universidad de La Frontera, sala por confirmar</dd>
         <dt>Entrada</dt>
-        <dd>Libre, no requiere inscripción</dd>
+        <dd>Libre, no necesitas inscribirte</dd>
       </dl>
       </div>
     </div>
@@ -123,130 +125,19 @@
 
     <section id="acerca">
       <h2>Acerca del seminario</h2>
-      <p>El Seminario de Estudiantes de Matemática Pura y Aplicada reúne a estudiantes de pregrado y postgrado de distintos programas para compartir ideas y resultados de matemáticas en un ambiente cercano. Las charlas son dictadas por estudiantes e invitados, y cubren desde temas de matemática pura hasta aplicaciones en física e ingeniería.</p>
-      <p>Si quieres presentar un tema, escríbenos.</p>
+      <p>El Seminario de Estudiantes de Matemática Pura y Aplicada reúne a estudiantes de pregrado de distintas carreras para compartir ideas matemáticas en un ambiente cercano. Las charlas son dictadas por estudiantes e invitados, y cubren desde temas de matemática pura hasta aplicaciones en física e ingeniería.</p>
+      <p>Si quieres presentar un tema, escríbenos. No necesitas experiencia previa dando charlas: te ayudamos a preparar la presentación.</p>
     </section>
 
     <section id="calendario">
       <h2>Calendario</h2>
-
-      <!--
-        CÓMO AGREGAR UNA CHARLA:
-        1. Copia un bloque completo <article class="charla"> ... </article>
-        2. Pégalo debajo del último bloque.
-        3. Cambia fecha, hora, lugar, título, expositor y resumen.
-        4. Para fórmulas usa $...$ dentro del texto, por ejemplo $e^{i\pi}+1=0$.
-        5. Cuando la charla ya ocurrió, mueve el bloque a la sección "Charlas anteriores"
-           y agrega el enlace a las diapositivas.
-      -->
-
-      <article class="charla">
-        <div class="cuando">
-          <strong>Fecha por confirmar</strong>
-          Hora por confirmar<br>
-          Sala por confirmar
-        </div>
-        <div>
-          <h3>Título de la charla (ejemplo)</h3>
-          <p class="quien"><b>Nombre del expositor</b>, carrera o institución</p>
-          <details>
-            <summary>Ver resumen</summary>
-            <p>Aquí va el resumen de la charla en dos o tres frases. Puedes escribir fórmulas, por ejemplo: para toda función continua $f:[a,b]\to\mathbb{R}$ existe $c\in[a,b]$ con $\int_a^b f = f(c)(b-a)$.</p>
-          </details>
-        </div>
-      </article>
-
+      <div id="lista-proximas"></div>
+      <noscript><p class="vacio">Para ver las charlas necesitas activar JavaScript en tu navegador.</p></noscript>
     </section>
 
     <section id="anteriores">
       <h2>Charlas anteriores</h2>
-      <article class="charla">
-        <div class="cuando">
-          <strong>Viernes 9 de octubre de 2026</strong>
-          15:40 hrs<br>
-          Auditorio Manuel López Ramírez, Departamento de Matemática y Estadística (UFRO)
-        </div>
-        <div>
-          <h3>Aproximación y ortogonalidad en espacios de Sobolev ponderados en el triángulo</h3>
-          <p class="quien"><b>Brayan Sandoval</b>, Ingeniero Civil Matemático, Universidad de Concepción</p>
-          <details>
-            <summary>Ver resumen</summary>
-            <p>Resumen por agregar.</p>
-          </details>
-          <p class="enlaces"><span class="pendiente">Diapositivas: por agregar</span></p>
-        </div>
-      </article>
-
-      <article class="charla">
-        <div class="cuando">
-          <strong>Jueves 24 de septiembre de 2026</strong>
-          12:00 hrs<br>
-          Auditorio Alberto Levy Widmer, Facultad de Ingeniería y Ciencias (UFRO)
-        </div>
-        <div>
-          <h3>Acciones C¹ de los grupos Baumslag-Solitar</h3>
-          <p class="quien"><b>Franco Gómez</b>, estudiante del Magíster en Ciencias Matemáticas, Universidad de Chile</p>
-          <details>
-            <summary>Ver resumen</summary>
-            <p>Resumen por agregar.</p>
-          </details>
-          <p class="enlaces"><span class="pendiente">Diapositivas: por agregar</span></p>
-        </div>
-      </article>
-
-      <article class="charla">
-        <div class="cuando">
-          <strong>Jueves 27 de agosto de 2026</strong>
-          11:00 hrs<br>
-          Auditorio Pablo Neruda, Facultad de Ciencias Jurídicas y Empresariales (UFRO)
-        </div>
-        <div>
-          <h3>Formas reales de hipersuperficies clásicas</h3>
-          <p class="quien"><b>Matías Vásquez</b>, estudiante del Magíster en Ciencias con mención en Matemática, Universidad de Talca</p>
-          <details>
-            <summary>Ver resumen</summary>
-            <p>Resumen por agregar.</p>
-          </details>
-          <p class="enlaces"><span class="pendiente">Diapositivas: por agregar</span></p>
-        </div>
-      </article>
-
-      <article class="charla">
-        <div class="cuando">
-          <strong>Jueves 27 de agosto de 2026</strong>
-          12:00 hrs<br>
-          Auditorio Pablo Neruda, Facultad de Ciencias Jurídicas y Empresariales (UFRO)
-        </div>
-        <div>
-          <h3>Un estudio en Representaciones de Grupos Oligomórficos</h3>
-          <p class="quien"><b>Alejandro Araya</b>, estudiante del Magíster en Ciencias con mención en Matemática, Universidad de Talca</p>
-          <details>
-            <summary>Ver resumen</summary>
-            <p>{\Large En el contexto de la teoría de representaciones, hay situaciones en las que las herramientas clásicas no son suficientes. Un ejemplo interesante son las categorías de interpolación en rango complejo introducidas por Pierre Deligne. En esta charla, presentaremos el trabajo de Nate Harman y Andrew Snowden, quienes desarrollan un marco para abordar situaciones como las que aparecen en las categorías de Deligne. Para ello, a partir de grupos oligomórficos, definen una noción de integración que permite construir un análogo de la multiplicación de matrices. Así, nos enfocaremos en la categoría \(\underline{\mathrm{Perm}}(G,\mu)\) de ``representaciones de permutación'', que permite obtener una visión más concreta de los objetos que aparecen en las categorías de Deligne. \par
-Finalmente, de contar con tiempo, comentaremos algunas propiedades interesantes de esta categoría y por qué resulta útil estudiar este tipo de objetos. \par}
-
-\begin{thebibliography}{9}
-
-\bibitem[Del07]{Del07} 
-P. Deligne, \textit{La catégorie des représentations du groupe symétrique $S_t$, lorsque $t$ n'est pas un entier naturel}, Algebraic groups and homogeneous spaces, 19:209--273, 2007.
-
-\bibitem[HS22]{HS22} 
-N. Harman and A. Snowden, \textit{Oligomorphic groups and tensor categories}, arXiv preprint arXiv:2204.04526, 2022..</p>
-          </details>
-          <p class="enlaces"><span class="pendiente">Diapositivas: por agregar</span></p>
-        </div>
-      </article>
-
-      <!--
-        CÓMO AGREGAR EL RESUMEN Y LAS DIAPOSITIVAS DE UNA CHARLA PASADA:
-        1. Resumen: reemplaza el texto "Resumen por agregar." por el resumen de la charla.
-           Puedes escribir fórmulas entre signos de dólar, por ejemplo $C^1$.
-        2. Diapositivas: sube el PDF a una carpeta llamada "diapositivas" en tu repositorio
-           (por ejemplo diapositivas/2026-10-09-sandoval.pdf).
-        3. Reemplaza la línea <span class="pendiente">Diapositivas: por agregar</span> por:
-           <a href="diapositivas/2026-10-09-sandoval.pdf">Ver diapositivas (PDF)</a>
-        4. Si hay video, agrega al lado: · <a href="https://...">Ver video</a>
-      -->
+      <div id="lista-pasadas"></div>
     </section>
 
     <section id="organizadores">
@@ -287,7 +178,106 @@ N. Harman and A. Snowden, \textit{Oligomorphic groups and tensor categories}, ar
 </footer>
 
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="charlas.js"></script>
+<script>
+(function () {
+  var MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+  var DIAS = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+
+  function el(tag, clase, texto) {
+    var e = document.createElement(tag);
+    if (clase) e.className = clase;
+    if (texto) e.textContent = texto;
+    return e;
+  }
+  function fechaLarga(iso) {
+    var p = iso.split("-"), d = new Date(+p[0], +p[1] - 1, +p[2]);
+    return DIAS[d.getDay()] + " " + d.getDate() + " de " + MESES[d.getMonth()] + " de " + d.getFullYear();
+  }
+  function hoyISO() {
+    var d = new Date(), m = d.getMonth() + 1, dd = d.getDate();
+    return d.getFullYear() + "-" + (m < 10 ? "0" : "") + m + "-" + (dd < 10 ? "0" : "") + dd;
+  }
+  function clave(c) { return c.fecha + " " + (c.hora || "00:00"); }
+
+  function tarjeta(c) {
+    var art = el("article", "charla");
+    var cuando = el("div", "cuando");
+    cuando.appendChild(el("strong", null, fechaLarga(c.fecha)));
+    if (c.hora) cuando.appendChild(document.createTextNode(c.hora + " hrs"));
+    if (c.hora && c.lugar) cuando.appendChild(document.createElement("br"));
+    if (c.lugar) cuando.appendChild(document.createTextNode(c.lugar));
+    art.appendChild(cuando);
+
+    var der = el("div");
+    der.appendChild(el("h3", null, c.titulo));
+    var quien = el("p", "quien");
+    quien.appendChild(el("b", null, c.expositor));
+    if (c.procedencia) quien.appendChild(document.createTextNode(", " + c.procedencia));
+    der.appendChild(quien);
+
+    if (c.resumen || c.colaboradores || (c.referencias && c.referencias.length)) {
+      var det = el("details");
+      det.appendChild(el("summary", null, "Ver resumen"));
+      if (c.resumen) {
+        c.resumen.trim().split(/\n\s*\n/).forEach(function (par) { det.appendChild(el("p", null, par.trim())); });
+      }
+      if (c.colaboradores) {
+        var col = el("p");
+        col.appendChild(el("b", null, "Trabajo realizado en conjunto con: "));
+        col.appendChild(document.createTextNode(c.colaboradores));
+        det.appendChild(col);
+      }
+      if (c.referencias && c.referencias.length) {
+        var rp = el("p"); rp.appendChild(el("b", null, "Referencias")); det.appendChild(rp);
+        var ul = el("ul", "referencias");
+        c.referencias.forEach(function (r) { var li = el("li"); li.innerHTML = r; ul.appendChild(li); });
+        det.appendChild(ul);
+      }
+      der.appendChild(det);
+    }
+
+    var enlaces = [];
+    if (c.diapositivas) enlaces.push(["Ver diapositivas (PDF)", c.diapositivas]);
+    if (c.video) enlaces.push(["Ver video", c.video]);
+    if (enlaces.length) {
+      var pe = el("p", "enlaces");
+      enlaces.forEach(function (e, i) {
+        if (i) pe.appendChild(document.createTextNode(" · "));
+        var a = el("a", null, e[0]); a.href = e[1]; pe.appendChild(a);
+      });
+      der.appendChild(pe);
+    }
+    art.appendChild(der);
+    return art;
+  }
+
+  function llenar(id, lista, vacio) {
+    var cont = document.getElementById(id);
+    if (!lista.length) { cont.appendChild(el("p", "vacio", vacio)); return; }
+    lista.forEach(function (c) { cont.appendChild(tarjeta(c)); });
+  }
+
+  var hoy = hoyISO();
+  var todas = (typeof CHARLAS !== "undefined" ? CHARLAS : []).map(function (c, i) { c._i = i; return c; });
+  var proximas = todas.filter(function (c) { return c.fecha >= hoy; })
+    .sort(function (a, b) { return clave(a) < clave(b) ? -1 : clave(a) > clave(b) ? 1 : a._i - b._i; });
+  var pasadas = todas.filter(function (c) { return c.fecha < hoy; })
+    .sort(function (a, b) { return clave(a) < clave(b) ? 1 : clave(a) > clave(b) ? -1 : a._i - b._i; });
+
+  llenar("lista-proximas", proximas, "Pronto anunciaremos la próxima sesión. Síguenos en Instagram (@seminario.matematica.ufro) para enterarte primero.");
+  llenar("lista-pasadas", pasadas, "Aquí aparecerán las charlas ya realizadas, con sus resúmenes y diapositivas.");
+
+  window.addEventListener("load", function () {
+    if (window.renderMathInElement) {
+      renderMathInElement(document.body, { delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ] });
+    }
+  });
+})();
+</script>
 </body>
 </html>
