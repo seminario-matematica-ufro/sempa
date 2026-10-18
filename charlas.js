@@ -13,7 +13,7 @@
 //  - Los campos colaboradores, referencias, diapositivas y video
 //    son opcionales: bórralos si no los necesitas.
 //  - diapositivas: ruta del PDF subido a la carpeta "diapositivas",
-//    por ejemplo "diapositivas/2026-10-09-sandoval.pdf".
+//    por ejemplo "diapositivas/maotsetung.pdf".
 // ============================================================
 const CHARLAS = [
 
@@ -62,7 +62,7 @@ Al centrarnos en las propiedades estructurales de los espacios —en lugar de co
 En esta línea, Bonatti, Monteverde, Navas y Rivas demostraron que ciertos grupos solubles, entre ellos $\mathrm{BS}(1,n)$ solo pueden actuar en $[0,1]$ de una única forma cuando exigimos cierta regularidad en la acción, que de hecho es conjugada una acción por transformaciones lineales.
 
 La idea de esta charla es presentar los preliminares necesarios para entender este resultado en $\mathrm{BS}(m,n)$ junto con el contexto en dinámica 1-dimensional de estos grupos. Además, mostraré un trabajo en conjunto con Rivas donde estudiamos las acciones de clase $C^1$ en $[0,1]$ del resto de los grupos en la familia Baumslag-Solitar, confirmando así la diversidad de su comportamiento dinámico al variar $m$ y $n$.`,
-    // diapositivas: "diapositivas/archivo.pdf",
+    diapositivas: "diapositivas/francogomez.pdf",
     // video: "https://...",
   },
 
@@ -98,7 +98,7 @@ En esta charla estudiaremos este problema para tres familias clásicas de hipers
       String.raw`[Sas23] Y. Sasaki, <em>On real forms of Fermat hypersurfaces</em>, 2023. Preprint, arXiv:2312.10691.`,
       String.raw`[LV26] A. Liendo y M. Vásquez, <em>Twisted forms of classical hypersurfaces</em>, 2026. Preprint, arXiv:2608.13896.`,
     ],
-    // diapositivas: "diapositivas/archivo.pdf",
+    diapositivas: "diapositivas/matiasvasquez.pdf",
     // video: "https://...",
   },
 
