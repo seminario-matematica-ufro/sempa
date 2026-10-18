@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seminario de Estudiantes de Matemática Pura y Aplicada</title>
+<meta name="description" content="Seminario de Estudiantes de Matemática Pura y Aplicada de la Universidad de La Frontera: charlas, calendario y contacto.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&amp;family=Source+Serif+4:wght@500;600&amp;display=swap">
+<style>
+  :root {
+    --tinta: #1c2430;
+    --gris: #5a6472;
+    --linea: #d9dde3;
+    --fondo-suave: #f5f6f8;
+    --acento: #1f4e8c;
+    --blanco: #ffffff;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+  body { margin: 0; font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; color: var(--tinta); background: var(--blanco); }
+  a { color: var(--acento); }
+  a:focus-visible, summary:focus-visible { outline: 3px solid var(--acento); outline-offset: 3px; }
+  .contenedor { max-width: 52rem; margin: 0 auto; padding: 0 1.25rem; }
+
+  header.barra { position: sticky; top: 0; z-index: 10; background: var(--blanco); border-bottom: 1px solid var(--linea); }
+  .barra .contenedor { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1.5rem; padding-top: .75rem; padding-bottom: .75rem; }
+  .marca { font-family: var(--serif); font-weight: 600; font-size: 1.25rem; color: var(--tinta); text-decoration: none; }
+  nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin: 0; padding: 0; }
+  nav a { color: var(--tinta); text-decoration: none; font-weight: 600; font-size: .98rem; padding: .25rem 0; border-bottom: 2px solid transparent; }
+  nav a:hover { border-bottom-color: var(--acento); }
+
+  .portada { background: var(--fondo-suave); border-bottom: 1px solid var(--linea); padding: 4rem 0 3.5rem; }
+  .portada h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2rem, 5.5vw, 3.1rem); line-height: 1.15; margin: 0 0 1.25rem; max-width: 18em; }
+  .portada p { margin: 0 0 .5rem; max-width: 40rem; color: var(--gris); font-size: 1.15rem; }
+  .datos { margin-top: 1.75rem; display: grid; gap: .35rem 2rem; grid-template-columns: max-content 1fr; max-width: 40rem; }
+  .datos dt { font-weight: 600; }
+  .datos dd { margin: 0; }
+
+  section { padding: 3.25rem 0 .5rem; }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: 1.7rem; margin: 0 0 1.25rem; padding-bottom: .5rem; border-bottom: 2px solid var(--tinta); }
+  h3 { font-family: var(--serif); font-weight: 500; font-size: 1.25rem; line-height: 1.3; margin: 0; }
+
+  .charla { border-top: 1px solid var(--linea); padding: 1.35rem 0; display: grid; grid-template-columns: 9.5rem 1fr; gap: .5rem 1.5rem; }
+  .charla:last-of-type { border-bottom: 1px solid var(--linea); }
+  .cuando { color: var(--gris); font-size: .98rem; line-height: 1.45; }
+  .cuando strong { display: block; color: var(--tinta); font-weight: 600; }
+  .quien { margin: .2rem 0 .6rem; color: var(--gris); }
+  .quien b { color: var(--tinta); font-weight: 600; }
+  details summary { cursor: pointer; color: var(--acento); font-weight: 600; width: fit-content; }
+  details p { margin: .6rem 0 .25rem; max-width: 38rem; }
+  .enlaces { margin: .5rem 0 0; font-size: .98rem; }
+  .vacio { padding: 1.25rem; background: var(--fondo-suave); border-left: 4px solid var(--acento); }
+
+  .organizadores { display: grid; gap: 1.25rem 2rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+  .organizadores p { margin: .15rem 0; }
+  .carrera { color: var(--gris); }
+
+  footer { margin-top: 4rem; padding: 2rem 0; background: var(--fondo-suave); border-top: 1px solid var(--linea); color: var(--gris); font-size: .96rem; }
+  footer p { margin: .2rem 0; }
+
+  @media (max-width: 40rem) {
+    .charla { grid-template-columns: 1fr; }
+    .datos { grid-template-columns: 1fr; }
+    .datos dd { margin-bottom: .5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <div class="contenedor">
+    <a class="marca" href="#inicio">Seminario de Estudiantes de Matemática</a>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#acerca">Acerca de</a></li>
+        <li><a href="#calendario">Calendario</a></li>
+        <li><a href="#anteriores">Charlas anteriores</a></li>
+        <li><a href="#organizadores">Organizadores</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="portada">
+    <div class="contenedor">
+      <h1>Seminario de Estudiantes de Matemática Pura y Aplicada</h1>
+      <p>Un espacio para que estudiantes presenten y conversen sobre matemática, con charlas abiertas a toda la comunidad universitaria.</p>
+      <dl class="datos">
+        <dt>Cuándo</dt>
+        <dd>Jueves en horario protegido, o jueves y viernes por la tarde</dd>
+        <dt>Dónde</dt>
+        <dd>Universidad de La Frontera, sala por confirmar</dd>
+        <dt>Entrada</dt>
+        <dd>Libre, no necesitas inscribirte</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="contenedor">
+
+    <section id="acerca">
+      <h2>Acerca del seminario</h2>
+      <p>El Seminario de Estudiantes de Matemática Pura y Aplicada reúne a estudiantes de pregrado de distintas carreras para compartir ideas matemáticas en un ambiente cercano. Las charlas son dictadas por estudiantes e invitados, y cubren desde temas de matemática pura hasta aplicaciones en física e ingeniería.</p>
+      <p>Si quieres presentar un tema, escríbenos. No necesitas experiencia previa dando charlas: te ayudamos a preparar la presentación.</p>
+    </section>
+
+    <section id="calendario">
+      <h2>Calendario</h2>
+
+      <!--
+        CÓMO AGREGAR UNA CHARLA:
+        1. Copia un bloque completo <article class="charla"> ... </article>
+        2. Pégalo debajo del último bloque.
+        3. Cambia fecha, hora, lugar, título, expositor y resumen.
+        4. Para fórmulas usa $...$ dentro del texto, por ejemplo $e^{i\pi}+1=0$.
+        5. Cuando la charla ya ocurrió, mueve el bloque a la sección "Charlas anteriores"
+           y agrega el enlace a las diapositivas.
+      -->
+
+      <article class="charla">
+        <div class="cuando">
+          <strong>Fecha por confirmar</strong>
+          Hora por confirmar<br>
+          Sala por confirmar
+        </div>
+        <div>
+          <h3>Título de la charla (ejemplo)</h3>
+          <p class="quien"><b>Nombre del expositor</b>, carrera o institución</p>
+          <details>
+            <summary>Ver resumen</summary>
+            <p>Aquí va el resumen de la charla en dos o tres frases. Puedes escribir fórmulas, por ejemplo: para toda función continua $f:[a,b]\to\mathbb{R}$ existe $c\in[a,b]$ con $\int_a^b f = f(c)(b-a)$.</p>
+          </details>
+        </div>
+      </article>
+
+    </section>
+
+    <section id="anteriores">
+      <h2>Charlas anteriores</h2>
+      <article class="charla">
+        <div class="cuando">
+          <strong>Viernes 9 de octubre de 2026</strong>
+          15:40 hrs<br>
+          Auditorio Manuel López Ramírez, Departamento de Matemática y Estadística (UFRO)
+        </div>
+        <div>
+          <h3>Aproximación y ortogonalidad en espacios de Sobolev ponderados en el triángulo</h3>
+          <p class="quien"><b>Brayan Sandoval</b>, Ingeniero Civil Matemático, Universidad de Concepción</p>
+        </div>
+      </article>
+
+      <article class="charla">
+        <div class="cuando">
+          <strong>Jueves 24 de septiembre de 2026</strong>
+          12:00 hrs<br>
+          Auditorio Alberto Levy Widmer, Facultad de Ingeniería y Ciencias (UFRO)
+        </div>
+        <div>
+          <h3>Acciones C¹ de los grupos Baumslag-Solitar</h3>
+          <p class="quien"><b>Franco Gómez</b>, estudiante del Magíster en Ciencias Matemáticas, Universidad de Chile</p>
+        </div>
+      </article>
+
+      <article class="charla">
+        <div class="cuando">
+          <strong>Jueves 27 de agosto de 2026</strong>
+          11:00 hrs<br>
+          Auditorio Pablo Neruda, Facultad de Ciencias Jurídicas y Empresariales (UFRO)
+        </div>
+        <div>
+          <h3>Formas reales de hipersuperficies clásicas</h3>
+          <p class="quien"><b>Matías Vásquez</b>, estudiante del Magíster en Ciencias con mención en Matemática, Universidad de Talca</p>
+        </div>
+      </article>
+
+      <article class="charla">
+        <div class="cuando">
+          <strong>Jueves 27 de agosto de 2026</strong>
+          11:00 hrs<br>
+          Auditorio Pablo Neruda, Facultad de Ciencias Jurídicas y Empresariales (UFRO)
+        </div>
+        <div>
+          <h3>Un estudio en Representaciones de Grupos Oligomórficos</h3>
+          <p class="quien"><b>Alejandro Araya</b>, estudiante del Magíster en Ciencias con mención en Matemática, Universidad de Talca</p>
+        </div>
+      </article>
+
+      <!-- Ejemplo de enlaces para una charla pasada:
+      <p class="enlaces"><a href="diapositivas/charla1.pdf">Diapositivas</a> · <a href="https://youtube.com/...">Video</a></p>
+      -->
+    </section>
+
+    <section id="organizadores">
+      <h2>Organizadores</h2>
+      <div class="organizadores">
+        <div>
+          <h3>Sebastián Bascuñán Garrido</h3>
+          <p class="carrera">Estudiante de Ingeniería Civil Física</p>
+          <p><a href="mailto:s.bascunan02@ufromail.cl">s.bascunan02@ufromail.cl</a></p>
+        </div>
+        <div>
+          <h3>Vicente Otazo Vicuña</h3>
+          <p class="carrera">Estudiante de Ingeniería Civil Matemática</p>
+          <p><a href="mailto:v.otazo01@ufromail.cl">v.otazo01@ufromail.cl</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>Para proponer una charla, resolver dudas o enterarte de las próximas sesiones, escríbenos o síguenos en Instagram.</p>
+      <dl class="datos">
+        <dt>Correo</dt>
+        <dd><a href="mailto:seminario.ufrontera@gmail.com">seminario.ufrontera@gmail.com</a></dd>
+        <dt>Instagram</dt>
+        <dd><a href="https://www.instagram.com/seminario.matematica.ufro/" rel="noopener">@seminario.matematica.ufro</a></dd>
+      </dl>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="contenedor">
+    <p>Seminario de Estudiantes de Matemática Pura y Aplicada</p>
+    <p>Universidad de La Frontera, Temuco, Chile</p>
+  </div>
+</footer>
+
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+</body>
+</html>
