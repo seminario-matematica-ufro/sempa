@@ -46,7 +46,7 @@ Al centrarnos en las propiedades estructurales de los espacios —en lugar de co
       String.raw`[5] Y. Xu, <em>Approximation by polynomials in Sobolev spaces with Jacobi weight</em>, J. Fourier Anal. Appl. <b>24</b> (2018), 1438–1459.`,
       String.raw`[6] R. H. Nochetto, E. Otárola y A. J. Salgado, A PDE approach to fractional diffusion in general domains: a priori error analysis, <em>Found. Comput. Math.</em>, 15(3):733–791, 2015.`,
     ],
-    // diapositivas: "diapositivas/archivo.pdf",
+    diapositivas: "diapositivas/brayansandoval.pdf",
     // video: "https://...",
   },
 
@@ -80,7 +80,7 @@ Finalmente, de contar con tiempo, comentaremos algunas propiedades interesantes 
       String.raw`[Del07] P. Deligne, <em>La catégorie des représentations du groupe symétrique $S_t$, lorsque $t$ n’est pas un entier naturel</em>, Algebraic groups and homogeneous spaces, 19:209–273, 2007.`,
       String.raw`[HS22] N. Harman y A. Snowden, <em>Oligomorphic groups and tensor categories</em>, arXiv preprint arXiv:2204.04526, 2022.`,
     ],
-    // diapositivas: "diapositivas/archivo.pdf",
+    diapositivas: "diapositivas/alejandroaraya.pdf",
     // video: "https://...",
   },
 
