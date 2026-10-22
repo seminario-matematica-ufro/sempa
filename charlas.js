@@ -14,6 +14,10 @@
 //    son opcionales: bórralos si no los necesitas.
 //  - diapositivas: ruta del PDF subido a la carpeta "diapositivas",
 //    por ejemplo "diapositivas/maotsetung.pdf".
+//  - afiche: ruta de la imagen subida a la carpeta "afiches",
+//    por ejemplo "afiches/2026-11-05.jpg". En las charlas próximas se
+//    muestra como miniatura; en las pasadas, como enlace "Ver afiche".
+//    Si dos charlas comparten afiche, usa la misma ruta en ambas.
 // ============================================================
 const CHARLAS = [
 
@@ -47,6 +51,7 @@ Al centrarnos en las propiedades estructurales de los espacios —en lugar de co
       String.raw`[6] R. H. Nochetto, E. Otárola y A. J. Salgado, A PDE approach to fractional diffusion in general domains: a priori error analysis, <em>Found. Comput. Math.</em>, 15(3):733–791, 2015.`,
     ],
     diapositivas: "diapositivas/brayansandoval.pdf",
+    afiche: "afiches/2026-10-09.jpg",
     // video: "https://...",
   },
 
@@ -63,6 +68,7 @@ En esta línea, Bonatti, Monteverde, Navas y Rivas demostraron que ciertos grupo
 
 La idea de esta charla es presentar los preliminares necesarios para entender este resultado en $\mathrm{BS}(m,n)$ junto con el contexto en dinámica 1-dimensional de estos grupos. Además, mostraré un trabajo en conjunto con Rivas donde estudiamos las acciones de clase $C^1$ en $[0,1]$ del resto de los grupos en la familia Baumslag-Solitar, confirmando así la diversidad de su comportamiento dinámico al variar $m$ y $n$.`,
     diapositivas: "diapositivas/francogomez.pdf",
+    afiche: "afiches/2026-09-24.jpg",
     // video: "https://...",
   },
 
@@ -81,6 +87,7 @@ Finalmente, de contar con tiempo, comentaremos algunas propiedades interesantes 
       String.raw`[HS22] N. Harman y A. Snowden, <em>Oligomorphic groups and tensor categories</em>, arXiv preprint arXiv:2204.04526, 2022.`,
     ],
     diapositivas: "diapositivas/alejandroaraya.pdf",
+    afiche: "afiches/2026-08-27-doble.jpg",
     // video: "https://...",
   },
 
@@ -99,6 +106,7 @@ En esta charla estudiaremos este problema para tres familias clásicas de hipers
       String.raw`[LV26] A. Liendo y M. Vásquez, <em>Twisted forms of classical hypersurfaces</em>, 2026. Preprint, arXiv:2608.13896.`,
     ],
     diapositivas: "diapositivas/matiasvasquez.pdf",
+    afiche: "afiches/2026-08-27-doble.jpg",
     // video: "https://...",
   },
 

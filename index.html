@@ -127,6 +127,14 @@
   .estado.mal { color: var(--mal); }
   .nota { margin: .5rem 0 0; font-size: .92rem; color: var(--gris); }
   .enlaces { margin: .5rem 0 0; font-size: .98rem; }
+  .afiche-mini { display: block; width: 11rem; max-width: 100%; margin-top: .85rem; }
+  .afiche-mini img { display: block; width: 100%; height: auto; border-radius: .35rem; border: 1px solid var(--linea); }
+
+  .galeria { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem .85rem; }
+  .galeria figure { margin: 0; }
+  .galeria img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: .35rem; }
+  .galeria figcaption { margin-top: .35rem; font-size: .9rem; color: var(--gris); }
+  @media (max-width: 40rem) { .galeria { grid-template-columns: repeat(2, 1fr); } }
   .vacio { padding: 1.25rem; background: var(--fondo-suave); border-left: 4px solid var(--verde); }
   .pendiente { color: var(--gris); font-style: italic; }
 
@@ -195,7 +203,7 @@
     <section id="acerca">
       <h2>Acerca del seminario</h2>
       <p>El Seminario de Estudiantes de Matemática Pura y Aplicada reúne a estudiantes de pregrado y postgrado de distintas carreras y universidades para compartir ideas matemáticas en un ambiente cercano. Las charlas son dictadas por estudiantes e invitados.</p>
-      <p>Los temas van desde la matemática pura, con áreas como geometría, análisis y álgebra, física matemática, ingeniería matemática y más.</p>
+      <p>Los temas van desde la matemática pura, con áreas como geometría, análisis y álgebra, hasta la física matemática, la ingeniería matemática y más.</p>
       <p>Si te interesa dar una charla, escríbenos.</p>
     </section>
 
@@ -222,6 +230,18 @@
     <section id="anteriores">
       <h2>Charlas anteriores</h2>
       <div id="lista-pasadas"></div>
+    </section>
+
+    <section id="fotos">
+      <h2>Desde las sesiones</h2>
+      <div class="galeria">
+        <figure><img src="fotos/matias-vasquez.jpg" alt="Matías Vásquez señalando una diapositiva con la hipersuperficie de Klein, frente al público" loading="lazy" width="1000" height="667"><figcaption>Matías Vásquez, 27 de agosto</figcaption></figure>
+        <figure><img src="fotos/alejandro-araya.jpg" alt="Alejandro Araya presentando junto a la pantalla de proyección" loading="lazy" width="1000" height="667"><figcaption>Alejandro Araya, 27 de agosto</figcaption></figure>
+        <figure><img src="fotos/pizarra.jpg" alt="Alejandro Araya escribiendo en la pizarra, de espaldas" loading="lazy" width="1000" height="667"><figcaption>Alejandro Araya en la pizarra</figcaption></figure>
+        <figure><img src="fotos/sala.jpg" alt="Sala del auditorio con público sentado y Brayan Sandoval junto a la pantalla" loading="lazy" width="1000" height="666"><figcaption>Brayan Sandoval, 9 de octubre</figcaption></figure>
+        <figure><img src="fotos/brayan-sandoval.jpg" alt="Brayan Sandoval y otra persona posando con una bolsa de regalo de la Universidad de La Frontera" loading="lazy" width="1000" height="666"><figcaption>Cierre de la charla de Brayan</figcaption></figure>
+        <figure><img src="fotos/coffee.jpg" alt="Mesa con galletas, pretzels, mandarinas y vasos de café" loading="lazy" width="1000" height="666"><figcaption>El coffee, como corresponde</figcaption></figure>
+      </div>
     </section>
 
     <section id="organizadores">
@@ -351,13 +371,23 @@
     var enlaces = [];
     if (c.diapositivas) enlaces.push(["Ver diapositivas (PDF)", c.diapositivas]);
     if (c.video) enlaces.push(["Ver video", c.video]);
+    var proxima = c.fecha >= hoy;
+    if (c.afiche && !proxima) enlaces.push(["Ver afiche", c.afiche, true]);
     if (enlaces.length) {
       var pe = el("p", "enlaces");
       enlaces.forEach(function (e, i) {
         if (i) pe.appendChild(document.createTextNode(" · "));
-        var a = el("a", null, e[0]); a.href = e[1]; pe.appendChild(a);
+        var a = el("a", null, e[0]); a.href = e[1];
+        if (e[2]) { a.target = "_blank"; a.rel = "noopener"; }
+        pe.appendChild(a);
       });
       der.appendChild(pe);
+    }
+    if (c.afiche && proxima) {
+      var la = el("a", "afiche-mini"); la.href = c.afiche; la.target = "_blank"; la.rel = "noopener";
+      la.setAttribute("aria-label", "Ver el afiche de la charla " + c.titulo);
+      var im = document.createElement("img"); im.src = c.afiche; im.alt = ""; im.loading = "lazy";
+      la.appendChild(im); der.appendChild(la);
     }
     art.appendChild(der);
     return art;
