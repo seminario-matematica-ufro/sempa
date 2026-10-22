@@ -134,8 +134,13 @@
   .organizadores p { margin: .15rem 0; }
   .carrera { color: var(--gris); }
 
-  footer { margin-top: 4rem; padding: 2rem 0; background: var(--fondo-suave); border-top: 4px solid var(--turquesa); color: var(--gris); font-size: .96rem; }
+  .apoyos { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin: 1.25rem 0 0; padding: 1.1rem 1.4rem; background: var(--azul); border-radius: .5rem; width: fit-content; max-width: 100%; }
+  .apoyos img { display: block; height: 3rem; width: auto; max-width: 100%; }
+
+  footer { margin-top: 4rem; padding: 2rem 0; background: var(--azul); border-top: 6px solid var(--turquesa); color: #e3eef5; font-size: .96rem; }
+  footer .contenedor { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
   footer p { margin: .2rem 0; }
+  footer img { display: block; height: 2.6rem; width: auto; }
 
   @media (max-width: 40rem) {
     .portada::after { display: none; }
@@ -156,6 +161,7 @@
         <li><a href="#calendario">Calendario</a></li>
         <li><a href="#anteriores">Charlas anteriores</a></li>
         <li><a href="#organizadores">Organizadores</a></li>
+        <li><a href="#financiamiento">Financiamiento</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
       <button type="button" id="boton-tema" class="boton-tema" aria-pressed="false" aria-label="Modo oscuro" title="Modo oscuro">
@@ -174,11 +180,11 @@
       <p>Un espacio para que estudiantes presenten y conversen sobre matemática, con charlas abiertas a la comunidad universitaria.</p>
       <dl class="datos">
         <dt>Cuándo</dt>
-        <dd>Jueves en horario protegido, o jueves y viernes por la tarde</dd>
+        <dd>Jueves y viernes por la tarde</dd>
         <dt>Dónde</dt>
         <dd>Universidad de La Frontera, sala por confirmar</dd>
         <dt>Entrada</dt>
-        <dd>Libre, no necesitas inscribirte</dd>
+        <dd>Libre, no requiere inscripción</dd>
       </dl>
       </div>
     </div>
@@ -188,8 +194,9 @@
 
     <section id="acerca">
       <h2>Acerca del seminario</h2>
-      <p>El Seminario de Estudiantes de Matemática Pura y Aplicada reúne a estudiantes de pregrado de distintas carreras para compartir ideas matemáticas en un ambiente cercano. Las charlas son dictadas por estudiantes e invitados, y cubren desde temas de matemática pura hasta aplicaciones en física e ingeniería.</p>
-      <p>Si quieres presentar un tema, escríbenos.</p>
+      <p>El Seminario de Estudiantes de Matemática Pura y Aplicada reúne a estudiantes de pregrado y postgrado de distintas carreras y universidades para compartir ideas matemáticas en un ambiente cercano. Las charlas son dictadas por estudiantes e invitados.</p>
+      <p>Los temas van desde la matemática pura, con áreas como geometría, análisis y álgebra, física matemática, ingeniería matemática y más.</p>
+      <p>Si te interesa dar una charla, escríbenos.</p>
     </section>
 
     <section id="calendario">
@@ -200,16 +207,15 @@
       <div class="suscripcion" id="avisos">
         <h3>Recibe los avisos de cada charla</h3>
         <p>Déjanos tu correo y te escribiremos antes de cada sesión con el título, el expositor y el lugar.</p>
-        <form id="form-avisos" aria-labelledby="titulo-avisos">
+        <form id="form-avisos" action="https://buttondown.com/api/emails/embed-subscribe/sempa" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/sempa', 'popupwindow')" aria-labelledby="titulo-avisos">
           <label for="s-email" id="titulo-avisos">Tu correo</label>
           <div class="fila-aviso">
             <input id="s-email" name="email" type="email" autocomplete="email" required placeholder="nombre@correo.cl">
             <button type="submit">Suscribirme</button>
           </div>
-          <div class="trampa" aria-hidden="true"><label>No completar este campo<input name="trampa" type="text" tabindex="-1" autocomplete="off"></label></div>
-          <p id="estado-avisos" class="estado" role="status" aria-live="polite"></p>
+          <input type="hidden" value="1" name="embed">
         </form>
-        <p class="nota">Sólo enviaremos avisos del seminario. Puedes darte de baja en cualquier momento escribiendo a seminario.ufrontera@gmail.com.</p>
+        <p class="nota">Sólo enviaremos avisos del seminario. Cada correo incluye un enlace para darte de baja en cualquier momento.</p>
       </div>
     </section>
 
@@ -232,6 +238,13 @@
           <p><a href="mailto:v.otazo01@ufromail.cl">v.otazo01@ufromail.cl</a></p>
         </div>
       </div>
+    </section>
+
+    <section id="financiamiento">
+      <h2>Financiamiento</h2>
+      <p>El seminario se realiza con apoyo parcial de la Dirección de Desarrollo Estudiantil (DDE) de la Universidad de La Frontera, en el marco de su línea «Proyectos de Vida Universitaria», y de distintas unidades de la universidad, como direcciones de carrera y departamentos.</p>
+      <div class="apoyos"><img src="images/dde-somos.png" alt="Somos DDE, Dirección de Desarrollo Estudiantil, Universidad de La Frontera" width="640" height="138"></div>
+      <p class="nota">Cofinanciamos el transporte de quienes den una charla.</p>
     </section>
 
     <section id="contacto">
@@ -266,8 +279,11 @@
 
 <footer>
   <div class="contenedor">
-    <p>Seminario de Estudiantes de Matemática Pura y Aplicada</p>
-    <p>Universidad de La Frontera, Temuco, Chile</p>
+    <div>
+      <p>Seminario de Estudiantes de Matemática Pura y Aplicada</p>
+      <p>Universidad de La Frontera, Temuco, Chile</p>
+    </div>
+    <img src="images/ufro-horizontal-blanco.png" alt="Universidad de La Frontera" width="640" height="224">
   </div>
 </footer>
 
@@ -409,45 +425,6 @@
       var cuerpo = d.mensaje + "\n\n—\n" + (d.nombre ? d.nombre + " " : "") + "(" + d.email + ")";
       aviso("No pudimos enviarlo desde la página. Se abrirá tu programa de correo con el mensaje listo; si no se abre, escríbenos a " + CORREO + ".", false);
       location.href = "mailto:" + CORREO + "?subject=" + encodeURIComponent(d.asunto) + "&body=" + encodeURIComponent(cuerpo);
-    })
-    .then(function () { boton.disabled = false; });
-  });
-})();
-</script>
-<script>
-(function () {
-  var ENDPOINT = "https://formsubmit.co/ajax/seminario.ufrontera@gmail.com";
-  var CORREO = "seminario.ufrontera@gmail.com";
-  var f = document.getElementById("form-avisos");
-  if (!f) return;
-  var estado = document.getElementById("estado-avisos");
-  var boton = f.querySelector("button");
-  function aviso(t, ok) { estado.textContent = t; estado.className = "estado " + (ok ? "ok" : "mal"); }
-
-  f.addEventListener("submit", function (e) {
-    e.preventDefault();
-    if (f.elements.trampa.value) return;
-    var correo = f.elements.email.value.trim();
-    boton.disabled = true;
-    aviso("Enviando…", true);
-    fetch(ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify({ email: correo, message: "Nueva suscripción a los avisos del seminario.",
-                             _subject: "[Suscripción SEMPA] " + correo, _template: "table", _captcha: "false" })
-    })
-    .then(function (r) {
-      return r.json().catch(function () { return {}; }).then(function (j) {
-        if (!r.ok || String(j.success) === "false") throw new Error("envio");
-      });
-    })
-    .then(function () {
-      f.reset();
-      aviso("¡Listo! Te avisaremos antes de cada charla. Si no ves nuestros correos, revisa la carpeta de spam y agrega " + CORREO + " a tus contactos.", true);
-    })
-    .catch(function () {
-      aviso("No pudimos registrar tu correo desde la página. Se abrirá tu programa de correo con un mensaje listo; si no se abre, escríbenos a " + CORREO + ".", false);
-      location.href = "mailto:" + CORREO + "?subject=" + encodeURIComponent("Suscripción a los avisos") + "&body=" + encodeURIComponent("Quiero recibir los avisos del seminario en este correo: " + correo);
     })
     .then(function () { boton.disabled = false; });
   });
